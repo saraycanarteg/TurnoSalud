@@ -33,6 +33,7 @@
 | D | Duración en meses = S / 4,33 | 12 / 4,33 = **2,77 meses** |
 | f | Dedicación promedio (fracción de jornada completa) | 1,00 (caso) / 0,90 (nuestro equipo, ver §3.8) |
 | E | Esfuerzo en personas-mes = N · D · f | se calcula abajo |
+| — | Equivalencia usada: 1 persona-mes = 4,33 semanas × 40 h | **173,2 h** |
 | P | Proyectos ejecutados en paralelo | 1 |
 | C | Criticidad del software (0 = no crítico, 1 = crítico para la seguridad) | 0 |
 | G | Objetivo de crecimiento y gestión de negocio (0 = no, 1 = sí) | 0 (el caso no lo menciona) |
@@ -70,21 +71,21 @@ $$
 | Escenario | Cálculo | E (personas-mes) | ¿E ≤ 6? |
 |---|---|---|---|
 | Caso original (6 personas) | E = 6 × 2,77 × 1,00 | **16,6** | No (2,77 veces el límite) |
-| Nuestro equipo (4 personas) | E = 1 728 h ÷ 160 h/mes (ver §3.8) | **10,8** | No (1,8 veces el límite) |
+| Nuestro equipo (4 personas) | E = 4 × 2,77 × 0,90 = 1 728 h ÷ 173,2 h (ver §3.8) | **10,0** | No (1,7 veces el límite) |
 
 **Proyectos en paralelo:** P = 1, así que se descartan Intermedio y Avanzado.
 
 **Resultado:**
 
 $$
-E = 16{,}6 > 6 \;\land\; P = 1 \;\Rightarrow\; \boxed{\text{Perfil Básico}}
+E_{caso} = 16{,}6 > 6 \;\;\land\;\; E_{equipo} = 10{,}0 > 6 \;\;\land\;\; P = 1 \;\Rightarrow\; \boxed{\text{Perfil Básico}}
 $$
 
 ## 1.4 Análisis de sensibilidad (¿cuándo cambiaría el perfil?)
 
 - **Para que fuera Entrada** (E ≤ 6), el proyecto tendría que durar como máximo:
-  - con 6 personas: D ≤ 6 / 6 = 1 mes ≈ **4,3 semanas**
-  - con 4 personas: D ≤ 6 / 4 = 1,5 meses ≈ **6,5 semanas**
+  - con 6 personas: D ≤ 6 / (6 × 1,00) = 1 mes ≈ **4,3 semanas**
+  - con 4 personas: D ≤ 6 / (4 × 0,90) = 1,67 meses ≈ **7,2 semanas**
 
   Con 12 semanas ninguno de los dos escenarios entra.
 - **Para que fuera Intermedio**, la VSE tendría que tomar un segundo proyecto en paralelo (P ≥ 2), y el enunciado lo descarta de forma explícita.
@@ -215,7 +216,7 @@ Ver §2.1. Cualquier cambio de alcance se canaliza con una *Solicitud de Cambio*
 | Saray | 100 % | 40 | 480 |
 | Danny | 100 % | 40 | 480 |
 | Jeancarlo | 100 % | 40 | 480 |
-| *Total* | *90 % promedio* | — | *1 728 h ≈ 10,8 personas-mes* |
+| *Total* | *90 % promedio* | — | *1 728 h ≈ 10,0 personas-mes* |
 
 *Esfuerzo por proceso*
 
@@ -288,55 +289,59 @@ Escala: Probabilidad (P) e Impacto (I) de 1 (bajo) a 3 (alto). *Exposición = P 
 
 ## 2.12 Estructura del repositorio (GP.1.15)
 
-turnosalud/  
-├── docs/  
-│   ├── gestion/          # Plan, reportes de avance, actas, solicitudes de cambio, riesgos  
-│   ├── requisitos/       # Especificación de requisitos, prototipos  
-│   ├── diseno/           # Arquitectura, modelo de datos  
-│   ├── pruebas/          # Casos y procedimientos de prueba, reporte de pruebas  
-│   └── entregables/      # Manuales y versiones aprobadas para el cliente  
-├── frontend/  
-├── backend/  
-├── db/                   # Scripts y migraciones  
-└── README.md  
+```
+turnosalud/
+├── docs/
+│   ├── gestion/          # Plan, reportes de avance, actas, solicitudes de cambio, riesgos
+│   ├── requisitos/       # Especificación de requisitos, prototipos
+│   ├── diseno/           # Arquitectura, modelo de datos
+│   ├── pruebas/          # Casos y procedimientos de prueba, reporte de pruebas
+│   └── entregables/      # Manuales y versiones aprobadas para el cliente
+├── frontend/
+├── backend/
+├── db/                   # Scripts y migraciones
+└── README.md
+```
+# 3. Validar requisitos con el cliente (IS.2)
 
-## 2.13 Verificación del Plan (GP.1.13). Responsable: Danny (LT)
+## 3.1 Cómo se trabajó la actividad
+ 
+La actividad IS.2 Análisis de requisitos convierte los requisitos generales del Enunciado del Trabajo en una **Especificación de Requisitos** concreta, verificable y aprobada por el cliente. La norma distingue dos revisiones que a veces se confunden. La **verificación** la hace el propio equipo y responde a la pregunta "¿está bien escrito el requisito?", es decir, si es claro, no se contradice con otros y se puede probar. La **validación** la hace el cliente y responde a "¿es esto lo que necesitamos?". Las dos dejan evidencia: el Resultado de verificación y el Resultado de validación.
+ 
+Durante la semana 2, Saray (AN) será la encargada de entrevistar a la administradora y a una recepcionista de la clínica, revisar cómo se lleva hoy la agenda en papel y en una hoja de cálculo, y redactar la primera versión de la especificación junto con un prototipo navegable en Figma. Hecha la verificación interna, se presenta el prototipo al cliente en la semana 3 debido a que ver las pantallas resulta mucho más útil que leer una lista de requisitos, en esta fase el cliente es capaz de detectar en minutos detalles que en el documento habían pasado desapercibidos.
 
-| Pregunta | ✔ / ✘ |
-|---|:-:|
-| ¿Tiene descripción del producto, alcance, objetivos y entregables? | ✔ |
-| ¿Incluye tareas de verificación, validación y revisión con el cliente? | ✔ |
-| ¿Están asignados los roles, sin nadie con más de 2? | ✔ |
-| ¿El calendario cabe en 12 semanas? | ✔ |
-| ¿El costo total es menor o igual a US$ 18 000? | ✔ |
-| ¿Se identificaron los riesgos con su respuesta y su dueño? | ✔ |
-| ¿Está definida la estrategia de control de versiones? | ✔ |
-| ¿Están definidas las instrucciones de entrega? | ✔ |
+El orden de las tareas siguió la guía del Perfil Básico:
+ 
+1. Domenica (GP) asignó las tareas de requisitos según los roles del plan.
+2. Saray (AN) documentó la Especificación de Requisitos a partir del Enunciado del Trabajo y de las entrevistas.
+3. Danny (LT) y Jeancarlo (responsable de pruebas) la **verificaron**. Jeancarlo revisó en particular que cada requisito pudiera convertirse en un caso de prueba.
+4. Saray y Domenica la **validaron** con el cliente en una reunión con el prototipo.
+5. Saray redactó el borrador del manual de usuario a partir de las pantallas validadas.
+6. Danny incorporó la especificación aprobada al repositorio como **línea base LB2**.
 
-## 2.14 Acta de reunión: revisión y aceptación del plan (GP.1.14)
-
-| Campo | Valor |
-|---|---|
-| Acta N.º | TS-ACTA-01 |
-| Fecha | ___ / ___ / 2026 |
-| Lugar | Clínica, Sangolquí |
-| Asistentes | Domenica (GP), Danny (LT), representante de la clínica (CL) |
-| Objetivo | Revisar y aceptar el Plan del Proyecto TurnoSalud v1.0 |
-
-**Temas tratados**
-
-1. Presentación del alcance, los entregables y el calendario.
-2. Resolución de las dudas del Enunciado del Trabajo (§2.3).
-3. Acuerdo del calendario de reuniones con el cliente (revisiones en las semanas 3, 6, 8, 9 y 11).
-
-**Acuerdos**
-
-| # | Acuerdo | Responsable | Fecha |
-|---|---|---|---|
-| 1 | Se aprueba el plan v1.0, con o sin ajustes | CL | ___ |
-| 2 | Se designa al representante del cliente para aprobar requisitos y cambios | CL | ___ |
-| 3 | Se crea la línea base LB1 en el repositorio | Danny (LT) | ___ |
-
-**Firmas:** Gestora del Proyecto ____________ · Cliente ____________
-
----
+## 3.2 Especificación de Requisitos (v1.0, validada)
+ 
+Cada requisito funcional tiene un identificador único, su origen en el Enunciado del Trabajo (trazabilidad) y un criterio de aceptación que después se transforma en caso de prueba. La tabla ya incluye los ajustes que pidió el cliente en la validación (§4.4).
+ 
+| ID | Requisito funcional | Origen | Prioridad | Criterio de aceptación |
+|---|---|---|---|---|
+| RF-01 | Registrar paciente con cédula, nombres, correo, teléfono, fecha de nacimiento y aceptación del consentimiento de datos | RG-01 | Must | No acepta cédulas duplicadas ni inválidas (valida el dígito verificador) y no guarda nada sin consentimiento |
+| RF-02 | Iniciar sesión y recuperar la contraseña por correo | RG-01 | Must | El enlace de recuperación caduca en 30 minutos |
+| RF-03 | Consultar horarios libres por especialidad, médico y fecha | RG-02 | Must | Solo muestra franjas libres de los próximos 30 días |
+| RF-04 | Reservar un turno | RG-03 | Must | Confirmación en pantalla y por correo; un paciente no puede tener dos turnos en la misma franja |
+| RF-05 | Cancelar un turno | RG-04 | Must | Permitido hasta **12 h** antes; la franja vuelve a quedar libre |
+| RF-06 | Reprogramar un turno | RG-04 | Must | Misma regla de 12 h; el turno anterior se libera |
+| RF-07 | Administrar médicos y especialidades | RG-05 | Must | Crear, editar y desactivar sin borrar el historial de turnos |
+| RF-08 | Configurar horarios, **duración de la cita por especialidad** y bloqueos | RG-05 | Must | Un bloqueo oculta las franjas afectadas a los pacientes |
+| RF-09 | Agenda diaria del médico, con marca de **"atendido" o "no asistió"** | RG-06 | Must | El médico ve solo su agenda; recepción ve todas |
+| RF-10 | Recepción agenda en nombre de un paciente | RG-07 | Should | Puede registrar un paciente nuevo con datos mínimos |
+| RF-11 | Recordatorio automático por correo 24 h antes | RG-08 | Should | El envío queda registrado; si falla, se reintenta |
+| RF-12 | Reportes de turnos y ausentismo con **exportación a CSV** | RG-09 | Could | Filtra por rango de fechas, médico y especialidad |
+ 
+| ID | Requisito no funcional | Criterio medible |
+|---|---|---|
+| RNF-01 | Usabilidad y diseño responsivo | Funciona de 360 px (celular) a escritorio en Chrome, Edge, Firefox y Safari |
+| RNF-02 | Seguridad | HTTPS obligatorio, contraseñas con hash (bcrypt), acceso por rol: paciente, recepción, médico y administrador |
+| RNF-03 | Protección de datos personales | Consentimiento explícito; no se guarda información clínica, solo datos de contacto y de la cita |
+| RNF-04 | Rendimiento | Consulta y reserva en menos de 3 s con 50 usuarios simultáneos |
+| RNF-05 | Respaldo | Copia diaria automática de la base de datos, con restauración probada |
