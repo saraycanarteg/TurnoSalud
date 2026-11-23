@@ -308,7 +308,7 @@ turnosalud/
  
 La actividad IS.2 Análisis de requisitos convierte los requisitos generales del Enunciado del Trabajo en una **Especificación de Requisitos** concreta, verificable y aprobada por el cliente. La norma distingue dos revisiones que a veces se confunden. La **verificación** la hace el propio equipo y responde a la pregunta "¿está bien escrito el requisito?", es decir, si es claro, no se contradice con otros y se puede probar. La **validación** la hace el cliente y responde a "¿es esto lo que necesitamos?". Las dos dejan evidencia: el Resultado de verificación y el Resultado de validación.
  
-Durante la semana 2, Saray (AN) entrevistó a la administradora y a una recepcionista de la clínica, revisó cómo se lleva hoy la agenda en papel y en una hoja de cálculo, y redactó la primera versión de la especificación junto con un prototipo navegable en Figma. Hecha la verificación interna, se presentó el prototipo al cliente en la semana 3, porque ver las pantallas resulta mucho más útil que leer una lista de requisitos: en esta fase el cliente detectó en minutos detalles que en el documento habían pasado desapercibidos.
+Durante la semana 2, Saray (AN) será la encargada de entrevistar a la administradora y a una recepcionista de la clínica, revisar cómo se lleva hoy la agenda en papel y en una hoja de cálculo, y redactar la primera versión de la especificación junto con un prototipo navegable en Figma. Hecha la verificación interna, se presenta el prototipo al cliente en la semana 3 debido a que ver las pantallas resulta mucho más útil que leer una lista de requisitos, en esta fase el cliente es capaz de detectar en minutos detalles que en el documento habían pasado desapercibidos.
 
 El orden de las tareas siguió la guía del Perfil Básico:
  
@@ -433,16 +433,16 @@ Se explica el análisis al cliente y la solicitud quedó **rechazada para esta v
 
 # 5. Medir el retrabajo y cerrar (GP.3, GP.4, IS.6)
 
-## 5.1 Cómo se registraron las horas
+## 5.1 Cómo se registran las horas
 
-Desde la primera semana, cada integrante anotó todos los días sus horas en una hoja de cálculo compartida, indicando la tarea del tablero Kanban y una de cuatro categorías. Clasificar bien cada hora fue la parte más difícil, así que el equipo acordó estas definiciones:
+Desde la primera semana, cada integrante anota todos los días sus horas en una hoja de cálculo compartida, indicando la tarea del tablero Kanban y una de cuatro categorías. Clasificar bien cada hora es la parte más difícil, así que el equipo acuerda estas definiciones:
 
 - **Gestión:** planificación, reuniones de seguimiento, reportes de avance, actas y análisis de solicitudes de cambio.
 - **Producción:** trabajo nuevo, como especificar, diseñar, programar, redactar manuales o desplegar. Incluye los cambios aprobados, como SC-01.
 - **Verificación y validación (V&V):** revisiones, pruebas unitarias, de integración y de aceptación, y reuniones de validación con el cliente.
-- **Retrabajo:** cualquier hora dedicada a rehacer algo que ya se había dado por terminado, porque tenía un defecto o porque estaba mal entendido.
+- **Retrabajo:** cualquier hora dedicada a rehacer algo que ya se dio por terminado, porque tiene un defecto o porque está mal entendido.
 
-La regla práctica fue: *si la tarea existe porque algo anterior salió mal, es retrabajo; si existe porque alguien pidió algo nuevo, es producción.* Cada viernes Domenica consolidaba la hoja y la incluía en el reporte de avance semanal (GP.2).
+La regla práctica es: *si la tarea existe porque algo anterior salió mal, es retrabajo; si existe porque alguien pidió algo nuevo, es producción.* Cada viernes Domenica consolida la hoja y la incluye en el reporte de avance semanal (GP.2).
 
 ## 5.2 Registro semanal de horas por categoría
 
@@ -473,11 +473,11 @@ $$
 \%\,\text{Retrabajo} = \frac{140\ \text{h}}{1\,638\ \text{h}} \times 100 = \mathbf{8{,}5\,\%} \qquad (\text{meta} \le 15\,\% \;\checkmark)
 $$
 
-El retrabajo costó 140 h × US$ 8,75 = **US$ 1 225**. Para dimensionar el resultado: si el proyecto hubiera tenido el 40 % de retrabajo típico de la industria, habrían sido unas 655 horas, casi cinco veces más, el equivalente a más de un mes de trabajo de todo el equipo.
+El retrabajo cuesta 140 h × US$ 8,75 = **US$ 1 225**. Para dimensionar el resultado: si el proyecto tuviera el 40 % de retrabajo típico de la industria, serían unas 655 horas, casi cinco veces más, el equivalente a más de un mes de trabajo de todo el equipo.
 
-Ahora bien, el promedio esconde dos semanas que superaron la meta. En la **semana 10** el retrabajo llegó al 23,1 %. Al integrar el frontend con el backend aparecieron muchos defectos de comunicación entre ambos: nombres de campos distintos, formatos de fecha y hora que no coincidían y validaciones que estaban en un lado pero no en el otro. Era un problema de método, no de un módulo en particular. Cada programador había trabajado con su propia idea del contrato de la API. En la revisión de GP.3 se registró la acción correctiva: documentar la API en un archivo OpenAPI compartido y agregar pruebas de integración automáticas a cada pull request. En la **semana 11** el retrabajo bajó al 16,2 %, todavía por encima de la meta porque incluía los cuatro casos que el cliente rechazó en la primera ronda de pruebas de aceptación. En la semana 12 ya estaba en 4,7 %.
+Ahora bien, el promedio esconde dos semanas que superan la meta. En la **semana 10** el retrabajo llega al 23,1 %. Al integrar el frontend con el backend aparecen muchos defectos de comunicación entre ambos: nombres de campos distintos, formatos de fecha y hora que no coinciden y validaciones que están en un lado pero no en el otro. Es un problema de método, no de un módulo en particular: cada programador trabaja con su propia idea del contrato de la API. En la revisión de GP.3 se registra la acción correctiva: documentar la API en un archivo OpenAPI compartido y agregar pruebas de integración automáticas a cada pull request. En la **semana 11** el retrabajo baja al 16,2 %, todavía por encima de la meta porque incluye los cuatro casos que el cliente rechaza en la primera ronda de pruebas de aceptación. En la semana 12 ya está en 4,7 %.
 
-El otro pico, de 13,3 % en la **semana 7**, vino de los defectos que el cliente encontró en la demostración del incremento 1. El más costoso fue un error de zona horaria que mostraba los turnos con una hora de diferencia en ciertos navegadores.
+El otro pico, de 13,3 % en la **semana 7**, viene de los defectos que el cliente encuentra en la demostración del incremento 1. El más costoso es un error de zona horaria que muestra los turnos con una hora de diferencia en ciertos navegadores.
 
 | Causa del retrabajo | Horas | % del retrabajo |
 |---|--:|--:|
@@ -488,7 +488,7 @@ El otro pico, de 13,3 % en la **semana 7**, vino de los defectos que el cliente 
 | Documentación | 8 | 5,7 % |
 | **Total** | **140** | **100 %** |
 
-La distribución por causa deja una lección clara. Casi la mitad del retrabajo fue código corregido después de las pruebas internas. Eso es esperable y, en cierto modo, es buena noticia: el defecto se encontró dentro del equipo y no lo vio el cliente. Las horas por requisitos (21,4 %) se concentraron en las semanas 3 y 4, cuando corregir costaba poco. Si esos mismos errores se hubieran descubierto en la semana 10, el impacto habría sido mucho mayor.
+La distribución por causa deja una lección clara. Casi la mitad del retrabajo es código corregido después de las pruebas internas. Eso es esperable y, en cierto modo, es buena noticia: el defecto se encuentra dentro del equipo y no lo ve el cliente. Las horas por requisitos (21,4 %) se concentran en las semanas 3 y 4, cuando corregir cuesta poco. Si esos mismos errores se descubrieran en la semana 10, el impacto sería mucho mayor.
 
 ## 5.4 Reporte de avance final (plan frente a real)
 
@@ -497,11 +497,11 @@ La distribución por causa deja una lección clara. Casi la mitad del retrabajo 
 | Duración | 12 semanas | 12 semanas | ✔ En plazo |
 | Esfuerzo | 1 728 h | 1 638 h (incluye las 46 h de SC-01) | ✔ −5,2 %, por los feriados |
 | Costo total | US$ 18 000 (con reserva) | US$ 15 232,50 | ✔ 84,6 % del presupuesto |
-| Hitos cumplidos en fecha | 8 | 7 de 8 | ⚠ H4c se demostró el 25/01 en lugar del 22/01, por SC-01 |
+| Hitos cumplidos en fecha | 8 | 7 de 8 | ⚠ H4c se demuestra el 25/01 en lugar del 22/01, por SC-01 |
 | Requisitos entregados | 12 RF + 5 RNF | 13 RF (con RF-13) + 5 RNF | ✔ |
 | Casos de prueba de aceptación | 100 % aprobados | 38/42 en la 1.ª ronda; 42/42 en la 2.ª | ✔ |
 | Defectos | — | 47 detectados (39 por el equipo, 8 por el cliente); 45 cerrados | ⚠ 2 defectos estéticos abiertos, cubiertos por la garantía |
 | Retrabajo | ≤ 15 % | 8,5 % | ✔ |
 | Solicitudes de cambio | — | 2 tramitadas: 1 aceptada, 1 rechazada | ✔ |
 
-El costo real se compone de 1 638 h × US$ 8,75 = US$ 14 332,50 de personal, más US$ 700 de infraestructura y US$ 200 de capacitación. El esfuerzo quedó por debajo de lo planificado porque el plan se armó con la capacidad completa del equipo durante 12 semanas, y los cuatro días de feriado redujeron las horas disponibles. Que el proyecto igual terminara a tiempo se explica en buena parte porque RG-10 salió del alcance durante la validación y porque la semana 12 se había planificado solo para la entrega. Como el precio con el cliente es fijo, la diferencia de US$ 2 767,50 queda como margen de la VSE.
+El costo real se compone de 1 638 h × US$ 8,75 = US$ 14 332,50 de personal, más US$ 700 de infraestructura y US$ 200 de capacitación. El esfuerzo queda por debajo de lo planificado porque el plan se arma con la capacidad completa del equipo durante 12 semanas, y los cuatro días de feriado reducen las horas disponibles. Que el proyecto igual termine a tiempo se explica en buena parte porque RG-10 sale del alcance durante la validación y porque la semana 12 está planificada solo para la entrega. Como el precio con el cliente es fijo, la diferencia de US$ 2 767,50 queda como margen de la VSE.
