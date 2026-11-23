@@ -288,17 +288,17 @@ Escala: Probabilidad (P) e Impacto (I) de 1 (bajo) a 3 (alto). *Exposición = P 
 
 ## 2.12 Estructura del repositorio (GP.1.15)
 
-turnosalud/
-├── docs/
-│   ├── gestion/          # Plan, reportes de avance, actas, solicitudes de cambio, riesgos
-│   ├── requisitos/       # Especificación de requisitos, prototipos
-│   ├── diseno/           # Arquitectura, modelo de datos
-│   ├── pruebas/          # Casos y procedimientos de prueba, reporte de pruebas
-│   └── entregables/      # Manuales y versiones aprobadas para el cliente
-├── frontend/
-├── backend/
-├── db/                   # Scripts y migraciones
-└── README.md
+turnosalud/  
+├── docs/  
+│   ├── gestion/          # Plan, reportes de avance, actas, solicitudes de cambio, riesgos  
+│   ├── requisitos/       # Especificación de requisitos, prototipos  
+│   ├── diseno/           # Arquitectura, modelo de datos  
+│   ├── pruebas/          # Casos y procedimientos de prueba, reporte de pruebas  
+│   └── entregables/      # Manuales y versiones aprobadas para el cliente  
+├── frontend/  
+├── backend/  
+├── db/                   # Scripts y migraciones  
+└── README.md  
 
 ## 2.13 Verificación del Plan (GP.1.13). Responsable: Danny (LT)
 
