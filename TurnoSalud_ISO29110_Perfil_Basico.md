@@ -505,3 +505,62 @@ La distribución por causa deja una lección clara. Casi la mitad del retrabajo 
 | Solicitudes de cambio | — | 2 tramitadas: 1 aceptada, 1 rechazada | ✔ |
 
 El costo real se compone de 1 638 h × US$ 8,75 = US$ 14 332,50 de personal, más US$ 700 de infraestructura y US$ 200 de capacitación. El esfuerzo queda por debajo de lo planificado porque el plan se arma con la capacidad completa del equipo durante 12 semanas, y los cuatro días de feriado reducen las horas disponibles. Que el proyecto igual termine a tiempo se explica en buena parte porque RG-10 sale del alcance durante la validación y porque la semana 12 está planificada solo para la entrega. Como el precio con el cliente es fijo, la diferencia de US$ 2 767,50 queda como margen de la VSE.
+
+## 5.5 Entrega del producto (IS.6)
+
+La entrega se planifica en torno al feriado de Carnaval. Se prevé que la versión candidata `v1.0.0-rc` quede aprobada en la semana 11, de modo que los días hábiles de la semana 12 se dediquen solo a dejar el producto en manos del cliente. Danny revisará que la configuración del software esté completa (código, scripts de base de datos y configuración del servidor) y Saray terminará la documentación de mantenimiento, que explicará cómo está organizado el código, cómo levantar un entorno de desarrollo y cómo se hacen y restauran los respaldos. Danny la verificará y se incorporará como parte de la línea base final.
+
+El **miércoles 10/02/2027** está previsto desplegar la versión `v1.0.0` en producción y dar la sesión de capacitación a recepción, a la administradora y a dos médicos. La entrega seguirá las instrucciones acordadas en §3.5: documentos en PDF en la carpeta compartida, repositorio transferido a la cuenta de la clínica y credenciales entregadas en persona en un documento cifrado.
+
+## 5.6 Cierre del proyecto (GP.4)
+
+El cierre formal tiene dos tareas en el Perfil Básico. La primera es obtener la aceptación del cliente conforme a las instrucciones de entrega, prevista para el **jueves 11/02/2027** con la firma del acta de aceptación. La segunda es actualizar el repositorio del proyecto: el viernes 12/02 Danny etiquetará la línea base **LB4 Producto aceptado**, Domenica subirá las actas y el reporte final a `docs/gestion/` y se hará el último respaldo.
+
+### Acta de aceptación (TS-ACTA-08) · plantilla prevista
+
+| Campo | Valor |
+|---|---|
+| Fecha prevista | 11/02/2027 |
+| Lugar | Clínica, Sangolquí |
+| Asistentes previstos | Domenica Villagómez (GP), Danny Ayuquina (LT), administradora de la clínica (CL) |
+| Objeto | Aceptación de los entregables del proyecto TurnoSalud |
+
+| Entregable | Criterio de aceptación (§3.5) | Resultado (se completará en la reunión) |
+|---|---|---|
+| E6 Software en producción `v1.0.0` | 100 % de los casos Must aprobados, sin defectos críticos abiertos | ☐ Aceptado ☐ Rechazado (meta: 42/42 casos) |
+| E5 Reporte de pruebas | Revisado por el CL | ☐ Aceptado ☐ Rechazado |
+| E7 Manual de usuario | Revisado por el CL | ☐ Aceptado ☐ Rechazado |
+| E8 Manual de operación | Revisado por el CL | ☐ Aceptado ☐ Rechazado |
+| E9 Documentación de mantenimiento | Revisada por el CL | ☐ Aceptada ☐ Rechazada |
+| Credenciales y repositorio | Recepción confirmada | ☐ Recibidos |
+
+**Tratamiento de pendientes:** si en la aceptación quedan defectos no críticos abiertos (por ejemplo, estéticos), se registrarán en el acta y se corregirán dentro de la garantía de 30 días, a más tardar el 26/02/2027. **Solicitudes para una fase futura:** las que queden fuera del alcance, como TS-SC-02 (pagos en línea), se dejarán registradas en el acta.
+
+Con la firma, el cliente declarará recibidos y aceptados los entregables del proyecto TurnoSalud.
+
+**Firmas:** Gestora del Proyecto ____________ · Cliente ____________
+
+## 5.7 Autoevaluación planificada con el paquete de despliegue
+
+Como cierre, el equipo comparará su trabajo con los objetivos de los procesos del Perfil Básico, usando las listas de verificación de los paquetes de despliegue (DP). La idea no será aprobarse a sí mismos, sino ver con honestidad dónde hay evidencia sólida y dónde no. La tabla siguiente recoge la evidencia que se espera tener y el riesgo de brecha que se anticipa desde ahora, para poder prevenirlo durante la ejecución.
+
+| Objetivo del proceso | Evidencia prevista | Riesgo de brecha y acción preventiva |
+|---|---|---|
+| GP · Plan del proyecto elaborado y aceptado | Plan v1.0 (y versiones posteriores si hay cambios), acta TS-ACTA-01 | Bajo |
+| GP · Avance monitoreado frente al plan | 12 reportes semanales con horas por categoría | Bajo, si el reporte se hace cada viernes |
+| GP · Solicitudes de cambio analizadas y resueltas | Registro de solicitudes de cambio (TS-SC-xx) con su decisión | Bajo |
+| GP · Reuniones de revisión con el equipo y el cliente | Actas de revisión con el cliente y registro de reuniones diarias | **Medio:** las reuniones diarias podrían quedar sin registro; se usará el registro simplificado de §5.8 |
+| GP · Riesgos identificados y seguidos | Matriz de riesgos actualizada en cada reporte | Bajo |
+| GP · Estrategia de control de versiones aplicada | Ramas, etiquetas y líneas base LB1 a LB4 en el repositorio | Bajo |
+| IS · Requisitos especificados, verificados y validados | Especificación de requisitos, TS-VER-01, TS-VAL-01 | Bajo |
+| IS · Arquitectura y diseño documentados | Documento de diseño con matriz de trazabilidad a requisitos | **Medio:** la trazabilidad puede quedar incompleta en los requisitos que se agreguen tarde; se actualizará la matriz en cada pull request |
+| IS · Componentes construidos y probados | Código en el repositorio con pruebas unitarias en cada pull request | Bajo |
+| IS · Integración y pruebas documentadas | Reporte de pruebas TS-PRU-01 | Bajo |
+| IS · Configuración y documentación de mantenimiento entregadas | LB4, manuales y acta de aceptación | Bajo |
+
+## 5.8 Reflexión anticipada y lecciones esperadas
+
+**¿Qué tarea se espera que aporte más valor?** Para el equipo será la validación de requisitos con un prototipo. Una reunión de dos horas con el cliente permitirá confirmar temas como la política de cancelación, la duración de las citas y la necesidad de marcar las ausencias, cosas que significarían rehacer código si se descubrieran en la semana 8. En segundo lugar, escribir con claridad qué queda **fuera** del alcance: si llega un pedido como el de pagos en línea, el equipo no tendrá que discutir opiniones, solo señalar lo que ya está firmado.
+
+**¿Qué producto podría resultar burocrático y cómo se simplificará?** Las actas de las reuniones diarias. Redactar un acta formal para una reunión de 15 minutos tomaría casi tanto tiempo como la reunión, y el riesgo es que varias no se hagan. Para no perder la evidencia, se reemplazará el acta por un comentario breve en la tarjeta del tablero Kanban con los bloqueos y acuerdos del día, que queda fechado y con autor. Algo parecido se aplicará al resultado de verificación como documento aparte: se convertirá en una lista de chequeo dentro de la plantilla del pull request, de modo que la verificación quede registrada en el mismo lugar donde se revisa el código.
+
