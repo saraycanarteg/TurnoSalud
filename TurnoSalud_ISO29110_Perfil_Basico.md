@@ -197,30 +197,6 @@ Ver §2.1. Cualquier cambio de alcance se canaliza con una *Solicitud de Cambio*
 | 12 | 08/02 – 12/02 | IS.6 Entrega (despliegue, capacitación) · GP.4 Cierre | Domenica / Danny | *H6: Entrega y cierre* |
 | 1–12 | Todo el proyecto | GP.2 Ejecución (reuniones semanales, reporte de avance, respaldo) · GP.3 Evaluación y control (avance frente al plan, cambios, riesgos) | Domenica | Reporte semanal |
 
-> En la semana 12 hay feriado de Carnaval (lunes 8 y martes 9 de febrero de 2027). Por eso la versión candidata *tiene que estar aprobada en la semana 11*, y la semana 12 queda solo para el despliegue, la capacitación y el cierre.
-
-mermaid
-gantt
-    title TurnoSalud — Calendario (ISO/IEC 29110 Perfil Básico)
-    dateFormat  YYYY-MM-DD
-    axisFormat  %d/%m
-    section Gestión (GP)
-    GP.1 Planificación            :gp1, 2026-11-23, 5d
-    GP.2/GP.3 Ejecución y control :gp2, 2026-11-30, 68d
-    GP.4 Cierre                   :gp4, 2027-02-10, 3d
-    section Implementación (IS)
-    IS.1 Inicio                   :is1, 2026-11-23, 5d
-    IS.2 Requisitos               :is2, 2026-11-30, 12d
-    IS.3 Arquitectura y diseño    :is3, 2026-12-14, 5d
-    IS.4 Incremento 1             :is41, 2026-12-21, 12d
-    IS.4 Incremento 2             :is42, 2027-01-04, 12d
-    IS.4 Incremento 3             :is43, 2027-01-18, 5d
-    IS.5 Integración y pruebas    :is5, 2027-01-25, 12d
-    IS.6 Entrega                  :is6, 2027-02-08, 5d
-
-
-*Ceremonias (integración con prácticas ágiles)*
-
 | Práctica | Frecuencia | Relación con la ISO/IEC 29110 |
 |---|---|---|
 | Planificación del incremento | Al inicio de cada incremento | GP.1 / GP.2 |
@@ -229,3 +205,138 @@ gantt
 | Retrospectiva | Al cierre de cada incremento | GP.3 acciones correctivas |
 | Reporte de avance | Semanal | GP.2 / GP.3 |
 
+## 2.8 Esfuerzo y costo estimados (GP.1.8)
+
+*Esfuerzo por persona*
+
+| Integrante | Dedicación | Horas/semana | Horas totales (12 sem.) |
+|---|---|---|---|
+| Domenica | 60 % | 24 | 288 |
+| Saray | 100 % | 40 | 480 |
+| Danny | 100 % | 40 | 480 |
+| Jeancarlo | 100 % | 40 | 480 |
+| *Total* | *90 % promedio* | — | *1 728 h ≈ 10,8 personas-mes* |
+
+*Esfuerzo por proceso*
+
+| Proceso | Horas | % |
+|---|---|---|
+| GP (planificación, seguimiento, control y cierre) | 288 | 16,7 % |
+| IS.1 Inicio | 40 | 2,3 % |
+| IS.2 Requisitos | 200 | 11,6 % |
+| IS.3 Arquitectura y diseño | 200 | 11,6 % |
+| IS.4 Construcción | 640 | 37,0 % |
+| IS.5 Integración y pruebas | 280 | 16,2 % |
+| IS.6 Entrega | 80 | 4,6 % |
+| *Total* | *1 728* | *100 %* |
+
+*Presupuesto* (tarifa referencial uniforme: US$ 8,75/h)
+
+| Rubro | Detalle | US$ | % |
+|---|---|---:|---:|
+| Personal | 1 728 h × 8,75 | 15 120 | 84,0 % |
+| Infraestructura y herramientas | Servidor y base de datos en la nube por 6 meses (300), dominio (30), correo transaccional (150), planes de herramientas de gestión y diseño (220) | 700 | 3,9 % |
+| Capacitación | Curso corto de ISO/IEC 29110 y protección de datos personales | 200 | 1,1 % |
+| Reserva de contingencia | Para riesgos y cambios aprobados | 1 980 | 11,0 % |
+| *Total* | | *18 000* | *100 %* |
+
+*Comprobación:* 15 120 + 700 + 200 + 1 980 = *US$ 18 000*, así que el plan está dentro del presupuesto.
+
+*Indicador de retrabajo* (se mide semanalmente en GP.3):
+
+$$
+\%\,\text{Retrabajo} = \frac{\text{Horas de retrabajo}}{\text{Horas totales registradas}} \times 100 \qquad \text{Meta: } \le 15\,\%
+$$
+
+## 2.9 Recursos (GP.1.5)
+
+| Tipo | Recurso |
+|---|---|
+| Humanos | 4 integrantes (§3.6) y el representante del cliente |
+| Equipos | Laptops propias del equipo, un celular Android y uno iOS para pruebas responsivas |
+| Herramientas | Git + GitHub (repositorio privado), Trello o Jira (tareas), Figma (prototipos), VS Code, Postman (API), Google Drive (respaldo y documentos compartidos) |
+| Infraestructura | Servidor en la nube con ambientes de staging y producción, PostgreSQL, certificado HTTPS (Let's Encrypt) |
+| Capacitación | ISO/IEC 29110 Perfil Básico; protección de datos personales en salud |
+
+## 2.10 Riesgos (GP.1.9)
+
+Escala: Probabilidad (P) e Impacto (I) de 1 (bajo) a 3 (alto). *Exposición = P × I* (≥ 6 es alta).
+
+| ID | Riesgo | P | I | Exp. | Respuesta | Dueño |
+|---|---|:-:|:-:|:-:|---|---|
+| R1 | Requisitos que cambian o están mal entendidos | 3 | 3 | *9* | Prototipo temprano, validación formal en la semana 3, solicitudes de cambio por GP.3 | Saray |
+| R2 | Sobrecarga del equipo reducido (4 personas en lugar de 6) | 3 | 3 | *9* | Priorización MoSCoW (los Could se sacrifican primero) y seguimiento semanal de horas | Domenica |
+| R3 | Feriados (25/12, 01/01, Carnaval 8–9/02) reducen la capacidad | 3 | 2 | *6* | Versión candidata en la semana 11 y semana 12 solo para entrega | Domenica |
+| R4 | Incumplir la protección de datos de salud | 2 | 3 | *6* | Consentimiento informado, cifrado, roles y revisión de seguridad en IS.5 | Danny |
+| R5 | El cliente no está disponible para validar | 2 | 3 | *6* | Calendario de reuniones acordado en el acta de aprobación del plan | Domenica |
+| R6 | Fallas o costo del servicio de notificaciones | 2 | 2 | 4 | Usar correo como canal base y dejar SMS/WhatsApp como opcional | Danny |
+| R7 | Poca experiencia con el stack tecnológico | 2 | 2 | 4 | Capacitación en la semana 1 y pruebas de concepto en IS.3 | Danny |
+| R8 | Pérdida de código o documentos | 1 | 3 | 3 | Repositorio remoto y respaldo semanal (§3.11) | Danny |
+
+## 2.11 Estrategia de control de versiones (GP.1.10)
+
+| Aspecto | Definición |
+|---|---|
+| Herramienta | Git con repositorio privado en GitHub |
+| Ramas | main (producción) · develop (integración) · feature/<id-requisito> · hotfix/<id> |
+| Integración | Pull request con revisión obligatoria de otro integrante antes de unir a develop |
+| Versiones | Versionado semántico: v0.1 (Inc. 1), v0.2 (Inc. 2), v0.3 (Inc. 3), v1.0.0-rc (sem. 11), v1.0.0 (entrega) |
+| Líneas base | LB1 Plan aprobado · LB2 Requisitos validados · LB3 Diseño verificado · LB4 Producto aceptado |
+| Nombres de documentos | TS-<TIPO>-<NN>_v<X.Y>.md (por ejemplo, TS-PLAN-01_v1.0.md, TS-ACTA-03_v1.0.md) |
+| Respaldo | Cada viernes se exporta el repositorio a Google Drive y el GP lo registra en el reporte de avance |
+| Acceso | Danny (LT): administrador · ET: escritura · CL: lectura de /docs/entregables |
+
+## 2.12 Estructura del repositorio (GP.1.15)
+
+turnosalud/
+├── docs/
+│   ├── gestion/          # Plan, reportes de avance, actas, solicitudes de cambio, riesgos
+│   ├── requisitos/       # Especificación de requisitos, prototipos
+│   ├── diseno/           # Arquitectura, modelo de datos
+│   ├── pruebas/          # Casos y procedimientos de prueba, reporte de pruebas
+│   └── entregables/      # Manuales y versiones aprobadas para el cliente
+├── frontend/
+├── backend/
+├── db/                   # Scripts y migraciones
+└── README.md
+
+## 2.13 Verificación del Plan (GP.1.13). Responsable: Danny (LT)
+
+| Pregunta | ✔ / ✘ |
+|---|:-:|
+| ¿Tiene descripción del producto, alcance, objetivos y entregables? | ✔ |
+| ¿Incluye tareas de verificación, validación y revisión con el cliente? | ✔ |
+| ¿Están asignados los roles, sin nadie con más de 2? | ✔ |
+| ¿El calendario cabe en 12 semanas? | ✔ |
+| ¿El costo total es menor o igual a US$ 18 000? | ✔ |
+| ¿Se identificaron los riesgos con su respuesta y su dueño? | ✔ |
+| ¿Está definida la estrategia de control de versiones? | ✔ |
+| ¿Están definidas las instrucciones de entrega? | ✔ |
+
+## 2.14 Acta de reunión: revisión y aceptación del plan (GP.1.14)
+
+| Campo | Valor |
+|---|---|
+| Acta N.º | TS-ACTA-01 |
+| Fecha | ___ / ___ / 2026 |
+| Lugar | Clínica, Sangolquí |
+| Asistentes | Domenica (GP), Danny (LT), representante de la clínica (CL) |
+| Objetivo | Revisar y aceptar el Plan del Proyecto TurnoSalud v1.0 |
+
+**Temas tratados**
+
+1. Presentación del alcance, los entregables y el calendario.
+2. Resolución de las dudas del Enunciado del Trabajo (§2.3).
+3. Acuerdo del calendario de reuniones con el cliente (revisiones en las semanas 3, 6, 8, 9 y 11).
+
+**Acuerdos**
+
+| # | Acuerdo | Responsable | Fecha |
+|---|---|---|---|
+| 1 | Se aprueba el plan v1.0, con o sin ajustes | CL | ___ |
+| 2 | Se designa al representante del cliente para aprobar requisitos y cambios | CL | ___ |
+| 3 | Se crea la línea base LB1 en el repositorio | Danny (LT) | ___ |
+
+**Firmas:** Gestora del Proyecto ____________ · Cliente ____________
+
+---
