@@ -345,3 +345,88 @@ Cada requisito funcional tiene un identificador único, su origen en el Enunciad
 | RNF-03 | Protección de datos personales | Consentimiento explícito; no se guarda información clínica, solo datos de contacto y de la cita |
 | RNF-04 | Rendimiento | Consulta y reserva en menos de 3 s con 50 usuarios simultáneos |
 | RNF-05 | Respaldo | Copia diaria automática de la base de datos, con restauración probada |
+
+## 3.3 Resultado de verificación (TS-VER-01)
+La verificación se hizo sobre la versión 0.2 de la especificación. Danny la revisó desde el punto de vista técnico (si cada requisito se puede construir y si hay contradicciones) y Jeancarlo desde las pruebas (si cada requisito tiene un criterio que se pueda comprobar). Encontraron seis defectos, que Saray corrigió en la versión 0.3 antes de mostrarla al cliente:
+
+| # | Defecto encontrado | Tipo | Corrección |
+|---|---|---|---|
+| V1 | "El sistema debe ser rápido" | Ambiguo, no se puede probar | Se cuantificó en RNF-04 (< 3 s con 50 usuarios) |
+| V2 | "Se puede cancelar con anticipación" | Ambiguo | Se fijó un plazo en horas (luego ajustado por el cliente) |
+| V3 | Faltaba la recuperación de contraseña | Omisión | Se agregó a RF-02 |
+| V4 | Reservar y consultar estaban descritos dos veces con reglas distintas | Inconsistencia | Se unificaron en RF-03 y RF-04 |
+| V5 | No se decía qué pasa con los turnos de un médico desactivado | Omisión | Se aclaró en RF-07 |
+| V6 | El rol "médico" podía ver la agenda de otros médicos | Riesgo de privacidad | Se restringió en RF-09 y RNF-02 |
+
+## 3.4 Resultado de validación (TS-VAL-01)
+
+La reunión de validación fue con la administradora (representante del cliente), Domenica y Saray. Se recorrió el prototipo pantalla por pantalla, simulando una reserva, una cancelación y la agenda de un día de un médico. El cliente estuvo de acuerdo con la estructura general, pero hizo cinco observaciones que se aplicaron en la versión 1.0:
+
+| # | Observación del cliente | Decisión | Requisito afectado |
+|---|---|---|---|
+| O1 | La política real de cancelación es de 12 h, no de 24 h | Se ajusta | RF-05, RF-06 |
+| O2 | Medicina general dura 20 minutos y los especialistas 30 | Se ajusta | RF-08 |
+| O3 | Recepción necesita marcar "no asistió" para medir el ausentismo | Se agrega | RF-09 |
+| O4 | El SMS o WhatsApp es caro por ahora; basta con correo | RG-10 sale del alcance de esta versión | — |
+| O5 | Los reportes deben poder abrirse en Excel | Se agrega exportación a CSV | RF-12 |
+
+Con esos cambios, el cliente **aprobó la Especificación de Requisitos v1.0**. Ese mismo día Danny etiquetó la versión en el repositorio como línea base **LB2**. Desde ese momento, cualquier modificación a estos requisitos ya no se trata como un ajuste informal, sino como una solicitud de cambio, que es lo que muestra la sección siguiente.
+
+Vale la pena notar que las observaciones O1, O2 y O3 se habrían descubierto, en el mejor de los casos, en la demostración del incremento 2, con el código ya escrito. Haberlas encontrado con un prototipo costó unas pocas horas de ajuste en lugar de rehacer módulos completos, y es la razón principal por la que el retrabajo en requisitos se mantuvo bajo.
+
+# 4. Gestionar una solicitud de cambio (GP.2.2 / GP.3)
+
+## 4.1 Procedimiento acordado
+
+Una **Solicitud de Cambio** es el pedido formal para modificar el software o su documentación, ya sea para corregir un problema o para agregar una mejora. Puede venir del cliente o del propio equipo. En el Perfil Básico, la gestora analiza el impacto en costo, plazo y aspectos técnicos (GP.2.2), y en GP.3 se controla que el cambio aprobado se implemente y se cierre. Si el cambio altera lo acordado con el cliente (alcance, plazo o costo), tienen que aprobarlo ambas partes. Si no lo altera, basta con actualizar el plan.
+
+Cada solicitud pasa por los estados **Registrada → En análisis → Aceptada o Rechazada → Implementada → Verificada → Cerrada**, y se guarda en `docs/gestion/` con el nombre `TS-SC-<NN>`. Durante el proyecto se tramitaron dos solicitudes: una aceptada y una rechazada.
+
+## 4.2 Solicitud de cambio SC-01: lista de espera
+
+Después de la demostración del incremento 1, sea notó un problema que el equipo no había previsto. Cuando un paciente cancela, la franja queda libre, pero nadie se entera, y la clínica pierde esa consulta. Por eso pidió una **lista de espera**: que un paciente pueda anotarse en un día sin cupos y que, si alguien cancela, el sistema avise al primero de la lista.
+
+| Campo | Contenido |
+|---|---|
+| Código | TS-SC-01 |
+| Fecha de registro | 05/01/2027 |
+| Solicitante | Administradora de la clínica (representante del CL), correo y teléfono en el expediente |
+| Propósito del cambio | Recuperar las consultas que se pierden por cancelaciones avisando a pacientes en lista de espera |
+| Tipo | Mejora (nuevo requisito RF-13) |
+| Sistemas y componentes afectados | Módulo de turnos (cancelar y reprogramar), módulo de notificaciones, base de datos (nueva tabla de lista de espera), pantallas del paciente |
+| Impacto en la operación de lo existente | RF-05 y RF-06 deben disparar el aviso a la lista de espera; RF-11 reutiliza el servicio de correo |
+| Impacto en la documentación | Especificación de requisitos v1.1, diseño (modelo de datos), casos de prueba, manual de usuario y plan del proyecto v1.1 |
+| Criticidad | Media: aporta valor de negocio, pero el sistema funciona sin el cambio |
+| Fecha requerida | Antes de la entrega (12/02/2027) |
+| Estado | Registrada → En análisis → **Aceptada (07/01/2027)** → Implementada → Verificada → **Cerrada (25/01/2027)** |
+
+## 4.3 Análisis de impacto y decisión
+
+Se realiza un análisis de la solicitud (Danny y Doménica) para determinar la estimación de esfuerzo, por ejemplo:
+
+| Rol | Trabajo | Horas |
+|---|---|---:|
+| AN (Saray) | Especificar RF-13 y actualizar la especificación | 6 |
+| DIS (Saray) | Pantalla de lista de espera y cambio en el modelo de datos | 4 |
+| PR (Danny) | Lógica de la lista y el aviso al cancelar (backend) | 16 |
+| PR (Jeancarlo) | Pantallas del paciente (frontend) | 10 |
+| Pruebas (Jeancarlo) | Casos de prueba nuevos y regresión de RF-05 y RF-06 | 8 |
+| GP (Domenica) | Análisis, actualización del plan y reunión con el cliente | 2 |
+| **Total** | | **46 h × US$ 8,75 = US$ 402,50** |
+
+En cuanto al **costo**, los US$ 402,50 se cubren con la reserva de contingencia, que pasa de US$ 1 980 a US$ 1 577,50 sin tocar el precio acordado. En cuanto al **plazo**, el cambio se puede repartir entre el incremento 2 (semanas 7 y 8) y el incremento 3 (semana 9). El análisis anticipó que la demostración del incremento 3 podía retrasarse un día, pero que la fecha de entrega no se movía. En lo **técnico**, el riesgo era bajo: el servicio de correo ya existía y la lógica de cancelación estaba aislada en un solo módulo.
+
+Como el cambio modifica el alcance acordado, aunque no el precio ni la fecha, se debe llevar a cabo una reunión con el cliente para la debida aceptación. A partir de ahí Domenica actualiza el plan a la versión 1.1 y Saray la especificación a la 1.1 con el nuevo **RF-13**. Las horas de este cambio se registraron como trabajo de *producción* y no como retrabajo: no se estaba corrigiendo un error, sino construyendo algo nuevo que el cliente pidió y aprobó. La distinción importa para calcular bien el indicador de la sección 5.
+
+## 4.4 Solicitud de cambio SC-02: pagos en línea (rechazada)
+
+El cliente pidió además que los pacientes pudieran pagar la consulta al reservar. Domenica estimó al menos 120 horas (unos US$ 1 050) por la integración con una pasarela de pagos, las pruebas con transacciones reales, las comisiones por transacción y las exigencias de seguridad que implica manejar tarjetas. Eso no cabía en la reserva que quedaba ni en el calendario sin mover la entrega una semana. Además, los pagos en línea estaban **excluidos de forma explícita** en el alcance del Enunciado del Trabajo.
+
+Se explica el análisis al cliente y la solicitud quedó **rechazada para esta versión**, con el acuerdo de registrarla como propuesta para una segunda fase con su propio presupuesto. Rechazar un cambio también es gestionarlo bien: lo que la norma exige es que la decisión se tome con un análisis de impacto y quede documentada, no que se diga que sí a todo.
+
+| Campo | TS-SC-02 |
+|---|---|
+| Propósito | Cobrar la consulta en línea al reservar |
+| Impacto estimado | ≥ 120 h, ≥ US$ 1 050, +1 semana de plazo, nuevos requisitos de seguridad |
+| Criticidad | Baja para esta versión |
+| Decisión | **Rechazada** (21/01/2027): fuera del alcance acordado; pasa a una futura fase 2 |
