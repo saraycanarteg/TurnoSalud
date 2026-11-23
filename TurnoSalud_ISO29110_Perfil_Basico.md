@@ -31,7 +31,7 @@
 | N | Número de personas en el proyecto | 6 (caso) / 4 (nuestro equipo) |
 | S | Duración en semanas | 12 |
 | D | Duración en meses = S / 4,33 | 12 / 4,33 = **2,77 meses** |
-| f | Dedicación promedio (fracción de jornada completa) | 1,00 (caso) / 0,90 (nuestro equipo, ver §3.8) |
+| f | Dedicación promedio (fracción de jornada completa) | 1,00 (caso) / 0,90 (nuestro equipo, ver §2.8) |
 | E | Esfuerzo en personas-mes = N · D · f | se calcula abajo |
 | — | Equivalencia usada: 1 persona-mes = 4,33 semanas × 40 h | **173,2 h** |
 | P | Proyectos ejecutados en paralelo | 1 |
@@ -71,7 +71,7 @@ $$
 | Escenario | Cálculo | E (personas-mes) | ¿E ≤ 6? |
 |---|---|---|---|
 | Caso original (6 personas) | E = 6 × 2,77 × 1,00 | **16,6** | No (2,77 veces el límite) |
-| Nuestro equipo (4 personas) | E = 4 × 2,77 × 0,90 = 1 728 h ÷ 173,2 h (ver §3.8) | **10,0** | No (1,7 veces el límite) |
+| Nuestro equipo (4 personas) | E = 4 × 2,77 × 0,90 = 1 728 h ÷ 173,2 h (ver §2.8) | **10,0** | No (1,7 veces el límite) |
 
 **Proyectos en paralelo:** P = 1, así que se descartan Intermedio y Avanzado.
 
@@ -115,30 +115,30 @@ Con este perfil se aplican dos procesos:
 
 | Tarea | Descripción | Responsable | Participa | Producto |
 |---|---|---|---|---|
-| GP.1.1 | Revisar el Enunciado del Trabajo | Domenica (GP) | Danny (LT), CL | Enunciado revisado (§2) |
-| GP.1.2 | Definir con el cliente las instrucciones de entrega | Domenica (GP) | CL | §3.5 |
-| GP.1.3 | Identificar las tareas, incluidas verificación, validación y revisiones | Domenica (GP) | Danny (LT), ET | §3.7 |
-| GP.1.4 | Estimar la duración | Domenica (GP) | Danny (LT) | §3.7 |
-| GP.1.5 | Identificar los recursos | Domenica (GP) | Danny (LT) | §3.9 |
-| GP.1.6 | Definir la composición del equipo | Domenica (GP) | — | §3.6 |
-| GP.1.7 | Asignar fechas de inicio y fin (calendario) | Domenica (GP) | Danny (LT) | §3.7 |
-| GP.1.8 | Estimar esfuerzo y costo | Domenica (GP) | Danny (LT) | §3.8 |
-| GP.1.9 | Identificar y documentar los riesgos | Domenica (GP) | ET | §3.10 |
-| GP.1.10 | Definir la estrategia de control de versiones | Danny (LT) | Domenica (GP) | §3.11 |
+| GP.1.1 | Revisar el Enunciado del Trabajo | Domenica (GP) | Danny (LT), CL | Enunciado del Trabajo revisado |
+| GP.1.2 | Definir con el cliente las instrucciones de entrega | Domenica (GP) | CL | §2.5 |
+| GP.1.3 | Identificar las tareas, incluidas verificación, validación y revisiones | Domenica (GP) | Danny (LT), ET | §2.7 |
+| GP.1.4 | Estimar la duración | Domenica (GP) | Danny (LT) | §2.7 |
+| GP.1.5 | Identificar los recursos | Domenica (GP) | Danny (LT) | §2.9 |
+| GP.1.6 | Definir la composición del equipo | Domenica (GP) | — | §2.6 |
+| GP.1.7 | Asignar fechas de inicio y fin (calendario) | Domenica (GP) | Danny (LT) | §2.7 |
+| GP.1.8 | Estimar esfuerzo y costo | Domenica (GP) | Danny (LT) | §2.8 |
+| GP.1.9 | Identificar y documentar los riesgos | Domenica (GP) | ET | §2.10 |
+| GP.1.10 | Definir la estrategia de control de versiones | Danny (LT) | Domenica (GP) | §2.11 |
 | GP.1.11–12 | Generar el Plan del Proyecto con producto, alcance, objetivos y entregables | Domenica (GP) | — | Este documento |
-| GP.1.13 | Verificar el Plan del Proyecto | Danny (LT) | Domenica (GP) | Lista de verificación §3.13 |
-| GP.1.14 | Revisar y aceptar el plan con el cliente | Domenica (GP) | CL | Acta de reunión §3.14 |
-| GP.1.15 | Crear el repositorio del proyecto | Danny (LT) | Domenica (GP) | Repositorio §3.12 |
+| GP.1.13 | Verificar el Plan del Proyecto | Danny (LT) | Domenica (GP) | Lista de verificación del plan |
+| GP.1.14 | Revisar y aceptar el plan con el cliente | Domenica (GP) | CL | Acta de reunión |
+| GP.1.15 | Crear el repositorio del proyecto | Danny (LT) | Domenica (GP) | Repositorio §2.12 |
 
 ## 2.2 Descripción del producto
 
-Ver el propósito, la descripción y los requisitos generales en §2.1.
+El propósito, la descripción y los requisitos generales del producto se toman del Enunciado del Trabajo revisado (GP.1.1).
 
 *Arquitectura preliminar* (la confirma el LT en IS.3): cliente web SPA (React), API REST (Node.js con Express), base de datos PostgreSQL, servicio de correo transaccional y despliegue en un servidor en la nube con HTTPS.
 
 ## 2.3 Alcance y objetivos
 
-Ver §2.1. Cualquier cambio de alcance se canaliza con una *Solicitud de Cambio*, que se registra, se analiza su impacto en plazo, costo y documentación, se aprueba o rechaza con el cliente y se gestiona en GP.3.
+El alcance y los objetivos son los acordados en el Enunciado del Trabajo revisado (GP.1.1). Cualquier cambio de alcance se canaliza con una *Solicitud de Cambio*, que se registra, se analiza su impacto en plazo, costo y documentación, se aprueba o rechaza con el cliente y se gestiona en GP.3.
 
 ## 2.4 Entregables
 
@@ -253,7 +253,7 @@ $$
 
 | Tipo | Recurso |
 |---|---|
-| Humanos | 4 integrantes (§3.6) y el representante del cliente |
+| Humanos | 4 integrantes (§2.6) y el representante del cliente |
 | Equipos | Laptops propias del equipo, un celular Android y uno iOS para pruebas responsivas |
 | Herramientas | Git + GitHub (repositorio privado), Trello o Jira (tareas), Figma (prototipos), VS Code, Postman (API), Google Drive (respaldo y documentos compartidos) |
 | Infraestructura | Servidor en la nube con ambientes de staging y producción, PostgreSQL, certificado HTTPS (Let's Encrypt) |
@@ -272,7 +272,7 @@ Escala: Probabilidad (P) e Impacto (I) de 1 (bajo) a 3 (alto). *Exposición = P 
 | R5 | El cliente no está disponible para validar | 2 | 3 | *6* | Calendario de reuniones acordado en el acta de aprobación del plan | Domenica |
 | R6 | Fallas o costo del servicio de notificaciones | 2 | 2 | 4 | Usar correo como canal base y dejar SMS/WhatsApp como opcional | Danny |
 | R7 | Poca experiencia con el stack tecnológico | 2 | 2 | 4 | Capacitación en la semana 1 y pruebas de concepto en IS.3 | Danny |
-| R8 | Pérdida de código o documentos | 1 | 3 | 3 | Repositorio remoto y respaldo semanal (§3.11) | Danny |
+| R8 | Pérdida de código o documentos | 1 | 3 | 3 | Repositorio remoto y respaldo semanal (§2.11) | Danny |
 
 ## 2.11 Estrategia de control de versiones (GP.1.10)
 
@@ -308,7 +308,7 @@ turnosalud/
  
 La actividad IS.2 Análisis de requisitos convierte los requisitos generales del Enunciado del Trabajo en una **Especificación de Requisitos** concreta, verificable y aprobada por el cliente. La norma distingue dos revisiones que a veces se confunden. La **verificación** la hace el propio equipo y responde a la pregunta "¿está bien escrito el requisito?", es decir, si es claro, no se contradice con otros y se puede probar. La **validación** la hace el cliente y responde a "¿es esto lo que necesitamos?". Las dos dejan evidencia: el Resultado de verificación y el Resultado de validación.
  
-Durante la semana 2, Saray (AN) será la encargada de entrevistar a la administradora y a una recepcionista de la clínica, revisar cómo se lleva hoy la agenda en papel y en una hoja de cálculo, y redactar la primera versión de la especificación junto con un prototipo navegable en Figma. Hecha la verificación interna, se presenta el prototipo al cliente en la semana 3 debido a que ver las pantallas resulta mucho más útil que leer una lista de requisitos, en esta fase el cliente es capaz de detectar en minutos detalles que en el documento habían pasado desapercibidos.
+Durante la semana 2, Saray (AN) entrevistó a la administradora y a una recepcionista de la clínica, revisó cómo se lleva hoy la agenda en papel y en una hoja de cálculo, y redactó la primera versión de la especificación junto con un prototipo navegable en Figma. Hecha la verificación interna, se presentó el prototipo al cliente en la semana 3, porque ver las pantallas resulta mucho más útil que leer una lista de requisitos: en esta fase el cliente detectó en minutos detalles que en el documento habían pasado desapercibidos.
 
 El orden de las tareas siguió la guía del Perfil Básico:
  
@@ -430,3 +430,78 @@ Se explica el análisis al cliente y la solicitud quedó **rechazada para esta v
 | Impacto estimado | ≥ 120 h, ≥ US$ 1 050, +1 semana de plazo, nuevos requisitos de seguridad |
 | Criticidad | Baja para esta versión |
 | Decisión | **Rechazada** (21/01/2027): fuera del alcance acordado; pasa a una futura fase 2 |
+
+# 5. Medir el retrabajo y cerrar (GP.3, GP.4, IS.6)
+
+## 5.1 Cómo se registraron las horas
+
+Desde la primera semana, cada integrante anotó todos los días sus horas en una hoja de cálculo compartida, indicando la tarea del tablero Kanban y una de cuatro categorías. Clasificar bien cada hora fue la parte más difícil, así que el equipo acordó estas definiciones:
+
+- **Gestión:** planificación, reuniones de seguimiento, reportes de avance, actas y análisis de solicitudes de cambio.
+- **Producción:** trabajo nuevo, como especificar, diseñar, programar, redactar manuales o desplegar. Incluye los cambios aprobados, como SC-01.
+- **Verificación y validación (V&V):** revisiones, pruebas unitarias, de integración y de aceptación, y reuniones de validación con el cliente.
+- **Retrabajo:** cualquier hora dedicada a rehacer algo que ya se había dado por terminado, porque tenía un defecto o porque estaba mal entendido.
+
+La regla práctica fue: *si la tarea existe porque algo anterior salió mal, es retrabajo; si existe porque alguien pidió algo nuevo, es producción.* Cada viernes Domenica consolidaba la hoja y la incluía en el reporte de avance semanal (GP.2).
+
+## 5.2 Registro semanal de horas por categoría
+
+| Sem. | Gestión | Producción | V&V | Retrabajo | Total | % retrabajo semana | % retrabajo acumulado |
+|:-:|--:|--:|--:|--:|--:|--:|--:|
+| 1 | 30 | 100 | 10 | 0 | 140 | 0,0 % | 0,0 % |
+| 2 | 24 | 104 | 12 | 2 | 142 | 1,4 % | 0,7 % |
+| 3 | 24 | 80 | 30 | 10 | 144 | 6,9 % | 2,8 % |
+| 4 | 24 | 92 | 22 | 6 | 144 | 4,2 % | 3,2 % |
+| 5 * | 20 | 80 | 12 | 4 | 116 | 3,4 % | 3,2 % |
+| 6 * | 20 | 70 | 18 | 10 | 118 | 8,5 % | 4,0 % |
+| 7 | 26 | 86 | 18 | 20 | 150 | 13,3 % | 5,5 % |
+| 8 | 24 | 88 | 22 | 14 | 148 | 9,5 % | 6,0 % |
+| 9 | 24 | 92 | 20 | 10 | 146 | 6,8 % | 6,1 % |
+| 10 | 24 | 40 | 56 | 36 | 156 | **23,1 %** | 8,0 % |
+| 11 | 24 | 40 | 60 | 24 | 148 | **16,2 %** | 8,8 % |
+| 12 * | 30 | 40 | 12 | 4 | 86 | 4,7 % | 8,5 % |
+| **Total** | **294** | **912** | **292** | **140** | **1 638** | | **8,5 %** |
+| **%** | 17,9 % | 55,7 % | 17,8 % | 8,5 % | 100 % | | |
+
+\* Semanas con feriados: 25/12/2026 (semana 5), 01/01/2027 (semana 6) y Carnaval 08 y 09/02/2027 (semana 12).
+
+## 5.3 Cálculo y análisis del retrabajo
+
+Con los totales del registro:
+
+$$
+\%\,\text{Retrabajo} = \frac{140\ \text{h}}{1\,638\ \text{h}} \times 100 = \mathbf{8{,}5\,\%} \qquad (\text{meta} \le 15\,\% \;\checkmark)
+$$
+
+El retrabajo costó 140 h × US$ 8,75 = **US$ 1 225**. Para dimensionar el resultado: si el proyecto hubiera tenido el 40 % de retrabajo típico de la industria, habrían sido unas 655 horas, casi cinco veces más, el equivalente a más de un mes de trabajo de todo el equipo.
+
+Ahora bien, el promedio esconde dos semanas que superaron la meta. En la **semana 10** el retrabajo llegó al 23,1 %. Al integrar el frontend con el backend aparecieron muchos defectos de comunicación entre ambos: nombres de campos distintos, formatos de fecha y hora que no coincidían y validaciones que estaban en un lado pero no en el otro. Era un problema de método, no de un módulo en particular. Cada programador había trabajado con su propia idea del contrato de la API. En la revisión de GP.3 se registró la acción correctiva: documentar la API en un archivo OpenAPI compartido y agregar pruebas de integración automáticas a cada pull request. En la **semana 11** el retrabajo bajó al 16,2 %, todavía por encima de la meta porque incluía los cuatro casos que el cliente rechazó en la primera ronda de pruebas de aceptación. En la semana 12 ya estaba en 4,7 %.
+
+El otro pico, de 13,3 % en la **semana 7**, vino de los defectos que el cliente encontró en la demostración del incremento 1. El más costoso fue un error de zona horaria que mostraba los turnos con una hora de diferencia en ciertos navegadores.
+
+| Causa del retrabajo | Horas | % del retrabajo |
+|---|--:|--:|
+| Defectos de código detectados en pruebas internas | 64 | 45,7 % |
+| Requisitos ambiguos u omitidos | 30 | 21,4 % |
+| Defectos detectados por el cliente (demostraciones y aceptación) | 26 | 18,6 % |
+| Errores de diseño | 12 | 8,6 % |
+| Documentación | 8 | 5,7 % |
+| **Total** | **140** | **100 %** |
+
+La distribución por causa deja una lección clara. Casi la mitad del retrabajo fue código corregido después de las pruebas internas. Eso es esperable y, en cierto modo, es buena noticia: el defecto se encontró dentro del equipo y no lo vio el cliente. Las horas por requisitos (21,4 %) se concentraron en las semanas 3 y 4, cuando corregir costaba poco. Si esos mismos errores se hubieran descubierto en la semana 10, el impacto habría sido mucho mayor.
+
+## 5.4 Reporte de avance final (plan frente a real)
+
+| Indicador | Planificado | Real | Evaluación |
+|---|---|---|---|
+| Duración | 12 semanas | 12 semanas | ✔ En plazo |
+| Esfuerzo | 1 728 h | 1 638 h (incluye las 46 h de SC-01) | ✔ −5,2 %, por los feriados |
+| Costo total | US$ 18 000 (con reserva) | US$ 15 232,50 | ✔ 84,6 % del presupuesto |
+| Hitos cumplidos en fecha | 8 | 7 de 8 | ⚠ H4c se demostró el 25/01 en lugar del 22/01, por SC-01 |
+| Requisitos entregados | 12 RF + 5 RNF | 13 RF (con RF-13) + 5 RNF | ✔ |
+| Casos de prueba de aceptación | 100 % aprobados | 38/42 en la 1.ª ronda; 42/42 en la 2.ª | ✔ |
+| Defectos | — | 47 detectados (39 por el equipo, 8 por el cliente); 45 cerrados | ⚠ 2 defectos estéticos abiertos, cubiertos por la garantía |
+| Retrabajo | ≤ 15 % | 8,5 % | ✔ |
+| Solicitudes de cambio | — | 2 tramitadas: 1 aceptada, 1 rechazada | ✔ |
+
+El costo real se compone de 1 638 h × US$ 8,75 = US$ 14 332,50 de personal, más US$ 700 de infraestructura y US$ 200 de capacitación. El esfuerzo quedó por debajo de lo planificado porque el plan se armó con la capacidad completa del equipo durante 12 semanas, y los cuatro días de feriado redujeron las horas disponibles. Que el proyecto igual terminara a tiempo se explica en buena parte porque RG-10 salió del alcance durante la validación y porque la semana 12 se había planificado solo para la entrega. Como el precio con el cliente es fijo, la diferencia de US$ 2 767,50 queda como margen de la VSE.
